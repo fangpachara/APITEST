@@ -37,10 +37,9 @@ public class SsoService {
 
             ssoRepository.save(user);
 
-            return new SsoResponse("I07000","ทำรายการเรียบร้อย", Map.of("userId", model.getUserId(),"tokenId", model.getTokenId()));
+            return new SsoResponse("I07000","ทำรายการเรียบร้อย", Map.of("userId",model.getUserId(),"tokenId",model.getTokenId()));
         }catch (Exception e){
-            return null;
+            return new SsoResponse("E000001","ไม่สามารถบันทึกข้อมูลลงฐานข้อมูลได้",Map.of("userId",model.getUserId(),"tokenId",model.getTokenId()));
         }
-        return null;
     }
 }
