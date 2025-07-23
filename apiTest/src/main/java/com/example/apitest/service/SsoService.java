@@ -4,7 +4,6 @@ import com.example.apitest.dto.SsoResponse;
 import com.example.apitest.dto.SsoUserModel;
 import com.example.apitest.entity.SsoUserEntity;
 import com.example.apitest.repository.SsoRepository;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDateTime;
@@ -13,8 +12,11 @@ import java.util.Map;
 @Service
 public class SsoService {
 
-    @Autowired
-    private SsoRepository ssoRepository;
+    private final SsoRepository ssoRepository;
+
+    public SsoService(SsoRepository ssoRepository) {
+        this.ssoRepository = ssoRepository;
+    }
 
     public SsoResponse saveData(SsoUserModel model) {
         SsoUserEntity user = new SsoUserEntity();
